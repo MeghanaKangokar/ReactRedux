@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap';
+import {Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import History from './components/History';
 import Address from './components/Address';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -20,8 +20,7 @@ class App extends React.Component{
             <Nav.Link href="/address">Address</Nav.Link>
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={term => this.props.search(term.target.value)}/>
           </Form>
         </Navbar.Collapse>
       </Navbar>
@@ -38,7 +37,7 @@ class App extends React.Component{
 
 const mapDispatchToProps = dispatch => {
   return {
-     search: (data) => dispatch(searchTerm(data))
+    search: (data) => dispatch(searchTerm(data))
   }
 };
 

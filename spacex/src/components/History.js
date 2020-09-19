@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getHistory } from './../redux/actions'
 import { Card } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
+import SearchResults  from 'react-filter-search';
 class History extends React.Component {
    constructor() {
       super();
@@ -10,7 +11,8 @@ class History extends React.Component {
          offset: 0,
          data: [],
          perPage: 3,
-         currentPage: 0
+         currentPage: 0,
+         currentData: []
       };
    }
 
@@ -55,24 +57,36 @@ class History extends React.Component {
          pageCount: Math.ceil(this.props.historyData.length / this.state.perPage),
          postData
       })
+      
+      this.setState({
+         currentData: postData
+      })
    }
 
    render() {
       return (
          <div>
-            {this.state.postData}
-            <ReactPaginate
-               previousLabel={"<<"}
-               nextLabel={">>"}
-               breakLabel={"..."}
-               breakClassName={"break-me"}
-               pageCount={this.state.pageCount}
-               marginPagesDisplayed={1}
-               pageRangeDisplayed={1}
-               onPageChange={this.handlePageClick}
-               containerClassName={"pagination"}
-               subContainerClassName={"pages pagination"}
-               activeClassName={"active"} />
+            <SearchResults
+               value={this.props.term}
+               data={this.state.currentData}
+               renderResults={results => (
+                  <div>
+                     {results}
+                     <ReactPaginate
+                        previousLabel={"<<"}
+                        nextLabel={">>"}
+                        breakLabel={"..."}
+                        breakClassName={"break-me"}
+                        pageCount={this.state.pageCount}
+                        marginPagesDisplayed={1}
+                        pageRangeDisplayed={1}
+                        onPageChange={this.handlePageClick}
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"} />
+                  </div>
+               )}
+            />
          </div>
 
       )
@@ -110,7 +124,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
    return {
-      historyData: state.historyData
+      historyData: state.historyData,
+      term: state.term
    };
 };
 
