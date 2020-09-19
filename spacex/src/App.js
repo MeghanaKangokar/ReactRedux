@@ -3,6 +3,7 @@ import './App.css';
 import {Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import History from './components/History';
 import Address from './components/Address';
+import Home from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchTerm } from './redux/actions/index'
@@ -16,7 +17,7 @@ class App extends React.Component{
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">History</Nav.Link>
+            <Nav.Link href="/history">History</Nav.Link>
             <Nav.Link href="/address">Address</Nav.Link>
           </Nav>
           <Form inline>
@@ -26,7 +27,8 @@ class App extends React.Component{
       </Navbar>
       <Router>
             <Switch> 
-              <Route exact path='/' component={History}></Route> 
+              <Route exact path='/' component={Home}></Route> 
+              <Route exact path='/history' component={History}></Route> 
               <Route exact path='/address' component={Address}></Route>
             </Switch> 
       </Router>
