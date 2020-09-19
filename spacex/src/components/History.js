@@ -73,13 +73,13 @@ class History extends React.Component {
                   <div>
                      {results}
                      <ReactPaginate
-                        previousLabel={"<<"}
-                        nextLabel={">>"}
-                        breakLabel={"..."}
+                        previousLabel={"<<Prev"}
+                        nextLabel={"Next>>"}
+                        breakLabel={''}
                         breakClassName={"break-me"}
                         pageCount={this.state.pageCount}
-                        marginPagesDisplayed={1}
-                        pageRangeDisplayed={1}
+                        marginPagesDisplayed={0}
+                        pageRangeDisplayed={0}
                         onPageChange={this.handlePageClick}
                         containerClassName={"pagination"}
                         subContainerClassName={"pages pagination"}
@@ -95,7 +95,7 @@ class History extends React.Component {
    componentDidMount() {
       this.fetchHistory().then(result => {
          if (!(!result)) {
-            this.props.handleIncrementClick(result);
+            this.props.saveData(result);
             this.receivedData();
          }
       });
@@ -118,7 +118,7 @@ class History extends React.Component {
 
 const mapDispatchToProps = dispatch => {
    return {
-      handleIncrementClick: (data) => dispatch(getHistory(data))
+      saveData: (data) => dispatch(getHistory(data))
    }
 };
 

@@ -7,3 +7,8 @@ export const searchTerm = (data) => ({
   type: 'SEARCH',
   payload: data
 });
+
+export const getAddress = (data) => ({
+  type: 'GET_ADDRESS',
+  payload: data
+});
