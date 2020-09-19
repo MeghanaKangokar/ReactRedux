@@ -51,6 +51,11 @@ button {
   color: white;
 }
 
+.items img{
+  width: 2%;
+  margin-right: 4px;
+}
+
 .addressitems label {
   color: darkgray;
 }

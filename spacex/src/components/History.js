@@ -45,9 +45,9 @@ class History extends React.Component {
                </Card.Text>
                <div className="items">
                   <span>Date: {this.convertDate(item.event_date_utc)}</span>
-                  <a href={item.links.reddit}>Reddit</a>
-                  <a href={item.links.wikipedia}>Wikipedia</a>
-                  <a href={item.links.article}>Article</a>
+                  <a href={item.links.reddit}><img src={require('./../assets/reddit.png')} alt="no content"/>Reddit</a>
+                  <a href={item.links.wikipedia}><img src={require('./../assets/wikipedia.png')} alt="no content"/>Wikipedia</a>
+                  <a href={item.links.article}><img src={require('./../assets/article.png')} alt="no content"/>Article</a>
                </div>
             </Card.Body>
          </Card>

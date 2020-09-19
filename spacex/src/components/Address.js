@@ -43,7 +43,7 @@ class Address extends React.Component {
             <Card.Body>
                <div className="address">
                   <div>
-                     <img src={require('../assets/rocket.png')}></img>
+                     <img src={require('../assets/rocket.png')} alt="No src"/>
                   </div>
                   <div className="addressitems">
                      <div><span><label>Customers: </label>{item.customers}</span></div>
